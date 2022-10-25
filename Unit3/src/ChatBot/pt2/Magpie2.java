@@ -1,4 +1,4 @@
-package ChatBot;
+package ChatBot.pt2;
 
 public class Magpie2
 {
@@ -21,7 +21,10 @@ public class Magpie2
 	public String getResponse(String statement)
 	{
 		String response = "";
-		if (statement.indexOf("no") >= 0)
+        if (statement.replaceAll(" ", "").length() == 0) {
+            response = "Say something, I'm giving up on you.";
+        }
+		else if (statement.indexOf("no") >= 0)
 		{
 			response = "Why so negative?";
 		}
@@ -39,7 +42,13 @@ public class Magpie2
             response = "He sounds like a good teacher.";
         }else if (statement.contains("Mrs.") || statement.contains("Ms.")) {
             response = "She sounds like a good teacher.";
-        }
+        }else if (statement.contains("bacon")) {
+            response = "I like bacon";
+        } else if (statement.contains("response")) {
+            response = "response";
+        } else if (statement.contains("adventure")) {
+			response = "I used to be an adventurer like you, then I took an arrow to the knee";
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -53,7 +62,7 @@ public class Magpie2
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -73,6 +82,10 @@ public class Magpie2
 		else if (whichResponse == 3)
 		{
 			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "Why?";
+		} else if (whichResponse == 5) {
+			response = "Uhhh";
 		}
 
 		return response;
